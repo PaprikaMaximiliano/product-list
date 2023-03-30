@@ -1,0 +1,15 @@
+.delete-button{
+    position: absolute;
+    top: 2%;
+    right: 2%
+}
+
+.card-body{
+}
+
+.album {
+    position: relative;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+}

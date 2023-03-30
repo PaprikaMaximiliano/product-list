@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import {Button} from "react-bootstrap";
+import DropdownSelect from "./components/DropdownSelect";
+import AddProductModal from "./components/AddProductModal/AddProductModal";
+import {useActions} from "./hooks/useActions";
+import {useTypedSelector} from "./hooks/useTypedSelector";
+import ProductList from "./components/ProductList";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const {showAddModal} = useActions()
+    const {isAddModalShown} = useTypedSelector(state => state.productList)
+    return (
+        <div className="App">
+            {isAddModalShown && <AddProductModal/>}
+
+            <ProductList/>
+            <div className='menu'>
+                <Button onClick={showAddModal} className='add-button' variant="primary">Add</Button>
+                <DropdownSelect/>
+            </div>
+        </div>
+    );
 }
 
 export default App;
